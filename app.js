@@ -431,22 +431,23 @@ function renderMatch(fixture, index, span, roundIndex) {
         <span>${fixture.date} | ${fixture.location}</span>
       </div>
       ${showProjection ? `<div class="match-subtitle">${probabilityLine(sides)}</div>` : ""}
-      ${sides.map(renderTeamRow).join("")}
+      ${sides.map((side) => renderTeamRow(side, roundIndex === 0)).join("")}
     </article>
   `;
 }
 
-function renderTeamRow(item) {
+function renderTeamRow(item, showConfirmed) {
   const isThird = item.seed.startsWith("3");
   const isFuture = !item.group;
+  const isConfirmed = showConfirmed && item.confirmed;
   const baseNote = qualificationNotes[item.name] || "This slot is decided by the prior knockout result.";
   const note = isThird ? `${baseNote} ${thirdPlaceSlotOptions(item)}` : baseNote;
   return `
-    <button class="team-row ${isFuture ? "future-row" : ""} ${item.confirmed ? "confirmed-row" : ""}" type="button" aria-label="${item.name}: ${note}">
-      <span class="seed ${isThird ? "third-seed" : ""} ${isFuture ? "future-seed" : ""} ${item.confirmed ? "confirmed-seed" : ""}">${item.seed}</span>
+    <button class="team-row ${isFuture ? "future-row" : ""} ${isConfirmed ? "confirmed-row" : ""}" type="button" aria-label="${item.name}: ${note}">
+      <span class="seed ${isThird ? "third-seed" : ""} ${isFuture ? "future-seed" : ""} ${isConfirmed ? "confirmed-seed" : ""}">${item.seed}</span>
       <span>
-        <span class="team-name">${item.name} <span class="rank-chip">${rankLabel(item)}</span>${item.confirmed ? ' <span class="bracket-chip">Confirmed</span>' : ""}</span>
-        <span class="team-meta">${roundRole(item)}${item.confirmed ? " | confirmed" : ""}</span>
+        <span class="team-name">${item.name} <span class="rank-chip">${rankLabel(item)}</span>${isConfirmed ? ' <span class="bracket-chip">Confirmed</span>' : ""}</span>
+        <span class="team-meta">${roundRole(item)}${isConfirmed ? " | confirmed" : ""}</span>
       </span>
       <span class="record">${recordLine(item)}</span>
       <span class="tooltip" role="tooltip">${note}</span>
