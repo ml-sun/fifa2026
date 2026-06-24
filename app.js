@@ -1,75 +1,75 @@
 const groups = {
   A: [
-    team("Mexico", 2, 0, 0, 3, 0),
-    team("South Korea", 1, 0, 1, 2, 2),
-    team("Czechia", 0, 1, 1, 2, 3),
-    team("South Africa", 0, 1, 1, 1, 3),
+    team("Mexico", 2, 0, 0, 3, 0, 0, 15),
+    team("South Korea", 1, 0, 1, 2, 2, 0, 22),
+    team("Czechia", 0, 1, 1, 2, 3, 0, 44),
+    team("South Africa", 0, 1, 1, 1, 3, 0, 61),
   ],
   B: [
-    team("Switzerland", 2, 1, 0, 7, 3),
-    team("Canada", 1, 1, 1, 8, 3),
-    team("Bosnia and Herzegovina", 1, 1, 1, 5, 6),
-    team("Qatar", 0, 1, 2, 2, 10),
+    team("Switzerland", 2, 1, 0, 7, 3, 0, 17),
+    team("Canada", 1, 1, 1, 8, 3, 0, 27),
+    team("Bosnia and Herzegovina", 1, 1, 1, 5, 6, 0, 71),
+    team("Qatar", 0, 1, 2, 2, 10, 0, 51),
   ],
   C: [
-    team("Brazil", 1, 1, 0, 4, 1),
-    team("Morocco", 1, 1, 0, 2, 1),
-    team("Scotland", 1, 0, 1, 1, 1),
-    team("Haiti", 0, 0, 2, 0, 4),
+    team("Brazil", 1, 1, 0, 4, 1, 0, 5),
+    team("Morocco", 1, 1, 0, 2, 1, 0, 11),
+    team("Scotland", 1, 0, 1, 1, 1, 0, 36),
+    team("Haiti", 0, 0, 2, 0, 4, 0, 84),
   ],
   D: [
-    team("United States", 2, 0, 0, 6, 1),
-    team("Australia", 1, 0, 1, 2, 2),
-    team("Paraguay", 1, 0, 1, 2, 4),
-    team("Turkiye", 0, 0, 2, 0, 3),
+    team("United States", 2, 0, 0, 6, 1, 0, 14),
+    team("Australia", 1, 0, 1, 2, 2, 0, 26),
+    team("Paraguay", 1, 0, 1, 2, 4, 0, 39),
+    team("Turkiye", 0, 0, 2, 0, 3, 0, 25),
   ],
   E: [
-    team("Germany", 2, 0, 0, 9, 2),
-    team("Ivory Coast", 1, 0, 1, 2, 2),
-    team("Ecuador", 0, 1, 1, 0, 1, -2),
-    team("Curacao", 0, 1, 1, 1, 7),
+    team("Germany", 2, 0, 0, 9, 2, 0, 9),
+    team("Ivory Coast", 1, 0, 1, 2, 2, 0, 42),
+    team("Ecuador", 0, 1, 1, 0, 1, -2, 23),
+    team("Curacao", 0, 1, 1, 1, 7, 0, 82),
   ],
   F: [
-    team("Netherlands", 1, 1, 0, 7, 3),
-    team("Japan", 1, 1, 0, 6, 2),
-    team("Sweden", 1, 0, 1, 6, 6, -3),
-    team("Tunisia", 0, 0, 2, 1, 9),
+    team("Netherlands", 1, 1, 0, 7, 3, 0, 7),
+    team("Japan", 1, 1, 0, 6, 2, 0, 18),
+    team("Sweden", 1, 0, 1, 6, 6, -3, 43),
+    team("Tunisia", 0, 0, 2, 1, 9, 0, 40),
   ],
   G: [
-    team("Egypt", 1, 1, 0, 4, 2),
-    team("Iran", 0, 2, 0, 3, 3),
-    team("Belgium", 0, 2, 0, 2, 2, 0),
-    team("New Zealand", 0, 1, 1, 3, 5),
+    team("Egypt", 1, 1, 0, 4, 2, 0, 34),
+    team("Iran", 0, 2, 0, 3, 3, 0, 20),
+    team("Belgium", 0, 2, 0, 2, 2, 0, 8),
+    team("New Zealand", 0, 1, 1, 3, 5, 0, 86),
   ],
   H: [
-    team("Spain", 1, 1, 0, 4, 0),
-    team("Uruguay", 0, 2, 0, 3, 3),
-    team("Cabo Verde", 0, 2, 0, 2, 2, -3),
-    team("Saudi Arabia", 0, 1, 1, 1, 5),
+    team("Spain", 1, 1, 0, 4, 0, 0, 1),
+    team("Uruguay", 0, 2, 0, 3, 3, 0, 16),
+    team("Cabo Verde", 0, 2, 0, 2, 2, -3, 68),
+    team("Saudi Arabia", 0, 1, 1, 1, 5, 0, 60),
   ],
   I: [
-    team("France", 2, 0, 0, 6, 1),
-    team("Norway", 2, 0, 0, 7, 3),
-    team("Senegal", 0, 0, 2, 3, 6, 0),
-    team("Iraq", 0, 0, 2, 1, 7),
+    team("France", 2, 0, 0, 6, 1, 0, 3),
+    team("Norway", 2, 0, 0, 7, 3, 0, 29),
+    team("Senegal", 0, 0, 2, 3, 6, 0, 19),
+    team("Iraq", 0, 0, 2, 1, 7, 0, 58),
   ],
   J: [
-    team("Argentina", 2, 0, 0, 5, 0),
-    team("Austria", 1, 0, 1, 3, 3),
-    team("Algeria", 1, 0, 1, 2, 4, -1),
-    team("Jordan", 0, 0, 2, 2, 5),
+    team("Argentina", 2, 0, 0, 5, 0, 0, 2),
+    team("Austria", 1, 0, 1, 3, 3, 0, 24),
+    team("Algeria", 1, 0, 1, 2, 4, -1, 35),
+    team("Jordan", 0, 0, 2, 2, 5, 0, 66),
   ],
   K: [
-    team("Colombia", 2, 0, 0, 4, 1),
-    team("Portugal", 1, 1, 0, 6, 1),
-    team("DR Congo", 0, 1, 1, 1, 2, -2),
-    team("Uzbekistan", 0, 0, 2, 1, 8),
+    team("Colombia", 2, 0, 0, 4, 1, 0, 13),
+    team("Portugal", 1, 1, 0, 6, 1, 0, 6),
+    team("DR Congo", 0, 1, 1, 1, 2, -2, 56),
+    team("Uzbekistan", 0, 0, 2, 1, 8, 0, 50),
   ],
   L: [
-    team("England", 1, 1, 0, 4, 2),
-    team("Ghana", 1, 1, 0, 1, 0),
-    team("Croatia", 1, 0, 1, 3, 4, -1),
-    team("Panama", 0, 0, 2, 0, 2),
+    team("England", 1, 1, 0, 4, 2, 0, 4),
+    team("Ghana", 1, 1, 0, 1, 0, 0, 72),
+    team("Croatia", 1, 0, 1, 3, 4, -1, 10),
+    team("Panama", 0, 0, 2, 0, 2, 0, 30),
   ],
 };
 
@@ -204,7 +204,7 @@ const knockout = [
   },
 ];
 
-function team(name, wins, draws, losses, gf, ga, tcs = 0) {
+function team(name, wins, draws, losses, gf, ga, tcs = 0, fifaRank = null) {
   return {
     name,
     wins,
@@ -215,6 +215,7 @@ function team(name, wins, draws, losses, gf, ga, tcs = 0) {
     gd: gf - ga,
     pts: wins * 3 + draws,
     tcs,
+    fifaRank,
   };
 }
 
@@ -283,15 +284,11 @@ function entrantFor(entry, fixture) {
     return teamFor(entry, fixture.id);
   }
 
-  const prefix = entry.type === "loser" ? "Loser" : "Winner";
-  const shortPrefix = entry.type === "loser" ? "L" : "W";
-  return {
-    name: `${prefix} Match ${entry.match}`,
-    seed: `${shortPrefix}${entry.match}`,
-    group: "",
-    pts: null,
-    gd: null,
-  };
+  if (entry.type === "winner") {
+    return projectedWinner(entry.match);
+  }
+
+  return projectedLoser(entry.match);
 }
 
 function recordLine(item) {
@@ -300,6 +297,50 @@ function recordLine(item) {
   }
   const gd = item.gd > 0 ? `+${item.gd}` : String(item.gd);
   return `${item.pts} pts, ${gd} GD`;
+}
+
+function rankLabel(item) {
+  return item.fifaRank ? `#${item.fifaRank}` : "";
+}
+
+function matchProbability(teamA, teamB) {
+  if (!teamA.fifaRank || !teamB.fifaRank) {
+    return 50;
+  }
+
+  const exponent = (teamA.fifaRank - teamB.fifaRank) / 40;
+  return Math.round((1 / (1 + Math.pow(10, exponent))) * 100);
+}
+
+function probabilityLine(sides) {
+  if (sides.length !== 2) {
+    return "";
+  }
+
+  const first = matchProbability(sides[0], sides[1]);
+  return `${sides[0].name} ${first}% | ${sides[1].name} ${100 - first}%`;
+}
+
+function getFixtureById(matchId) {
+  for (const round of knockout) {
+    const found = round.matches.find((fixture) => fixture.id === matchId);
+    if (found) {
+      return found;
+    }
+  }
+  throw new Error(`Unknown match ${matchId}`);
+}
+
+function projectedWinner(matchId) {
+  const fixture = getFixtureById(matchId);
+  const sides = [entrantFor(fixture.home, fixture), entrantFor(fixture.away, fixture)];
+  return sides[0].fifaRank <= sides[1].fifaRank ? sides[0] : sides[1];
+}
+
+function projectedLoser(matchId) {
+  const fixture = getFixtureById(matchId);
+  const sides = [entrantFor(fixture.home, fixture), entrantFor(fixture.away, fixture)];
+  return sides[0].fifaRank > sides[1].fifaRank ? sides[0] : sides[1];
 }
 
 function roundRole(item) {
@@ -329,21 +370,23 @@ function renderRound(round, roundIndex) {
     <section class="round" aria-label="${round.name}">
       <h3>${round.name}</h3>
       <div class="round-matches">
-        ${round.matches.map((fixture, index) => renderMatch(fixture, index, span)).join("")}
+        ${round.matches.map((fixture, index) => renderMatch(fixture, index, span, roundIndex)).join("")}
       </div>
     </section>
   `;
 }
 
-function renderMatch(fixture, index, span) {
+function renderMatch(fixture, index, span, roundIndex) {
   const sides = [entrantFor(fixture.home, fixture), entrantFor(fixture.away, fixture)];
   const slotStart = index * span + 1;
+  const showProjection = roundIndex > 0;
   return `
     <article class="match" style="--slot-start: ${slotStart}; --slot-span: ${span};">
       <div class="match-head">
         <span>${fixture.label || `Match ${fixture.id}`}</span>
         <span>${fixture.date} | ${fixture.location}</span>
       </div>
+      ${showProjection ? `<div class="match-subtitle">${probabilityLine(sides)}</div>` : ""}
       ${sides.map(renderTeamRow).join("")}
     </article>
   `;
@@ -358,7 +401,7 @@ function renderTeamRow(item) {
     <button class="team-row ${isFuture ? "future-row" : ""} ${item.confirmed ? "confirmed-row" : ""}" type="button" aria-label="${item.name}: ${note}">
       <span class="seed ${isThird ? "third-seed" : ""} ${isFuture ? "future-seed" : ""} ${item.confirmed ? "confirmed-seed" : ""}">${item.seed}</span>
       <span>
-        <span class="team-name">${item.name}${item.confirmed ? ' <span class="bracket-chip">Confirmed</span>' : ""}</span>
+        <span class="team-name">${item.name} <span class="rank-chip">${rankLabel(item)}</span>${item.confirmed ? ' <span class="bracket-chip">Confirmed</span>' : ""}</span>
         <span class="team-meta">${roundRole(item)}${item.confirmed ? " | confirmed" : ""}</span>
       </span>
       <span class="record">${recordLine(item)}</span>
