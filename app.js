@@ -73,6 +73,16 @@ const groups = {
   ],
 };
 
+const confirmedTeams = new Set([
+  "Mexico",
+  "United States",
+  "Germany",
+  "France",
+  "Norway",
+  "Argentina",
+  "Colombia",
+]);
+
 const qualificationNotes = {
   Mexico: "Already clinched Group A. The projected 1A spot is secure.",
   "South Korea": "Projected 2A. A draw against South Africa secures advancement; a loss can open the door for Czechia or South Africa on tiebreakers.",
@@ -213,7 +223,12 @@ function futureMatch(id, date, location, homeMatch, awayMatch, label = "", resul
 function teamFor(seedData) {
   const index = Number(seedData.place) - 1;
   const source = groups[seedData.group][index];
-  return { ...source, seed: `${seedData.place}${seedData.group}`, group: seedData.group };
+  return {
+    ...source,
+    seed: `${seedData.place}${seedData.group}`,
+    group: seedData.group,
+    confirmed: confirmedTeams.has(source.name),
+  };
 }
 
 function entrantFor(entry) {
@@ -289,11 +304,11 @@ function renderTeamRow(item) {
   const isFuture = !item.group;
   const note = qualificationNotes[item.name] || "This slot is decided by the prior knockout result.";
   return `
-    <button class="team-row ${isFuture ? "future-row" : ""}" type="button" aria-label="${item.name}: ${note}">
+    <button class="team-row ${isFuture ? "future-row" : ""} ${item.confirmed ? "confirmed-row" : ""}" type="button" aria-label="${item.name}: ${note}">
       <span class="seed ${isThird ? "third-seed" : ""} ${isFuture ? "future-seed" : ""}">${item.seed}</span>
       <span>
         <span class="team-name">${item.name}</span>
-        <span class="team-meta">${roundRole(item)}</span>
+        <span class="team-meta">${roundRole(item)}${item.confirmed ? " | confirmed" : ""}</span>
       </span>
       <span class="record">${recordLine(item)}</span>
       <span class="tooltip" role="tooltip">${note}</span>
@@ -303,28 +318,46 @@ function renderTeamRow(item) {
 
 function thirdPlacedTeams() {
   return Object.entries(groups)
-    .map(([group, rows]) => ({ ...rows[2], group }))
+    .map(([group, rows]) => ({ ...rows[2], group, confirmed: confirmedTeams.has(rows[2].name) }))
     .sort((a, b) => b.pts - a.pts || b.gd - a.gd || b.gf - a.gf || b.tcs - a.tcs || a.group.localeCompare(b.group));
 }
 
 function renderThirdList() {
   const assignments = new Set(Object.values(thirdAssignments));
   const list = document.querySelector("#thirdList");
-  list.innerHTML = thirdPlacedTeams()
-    .map((item, index) => {
-      const qualified = assignments.has(item.group);
-      return `
-        <article class="third-card ${qualified ? "" : "out"}">
-          <span class="rank">${index + 1}</span>
-          <span>
-            <strong>${item.name}</strong>
-            <span class="team-meta">3${item.group} | ${qualified ? "projected in" : "currently out"}</span>
-          </span>
-          <span class="record">${recordLine(item)}</span>
-        </article>
-      `;
-    })
-    .join("");
+  const teams = thirdPlacedTeams().map((item, index) => ({
+    ...item,
+    rank: index + 1,
+    projectedIn: assignments.has(item.group),
+  }));
+  const projected = teams.filter((item) => item.projectedIn);
+  const possible = teams.filter((item) => !item.projectedIn);
+  list.innerHTML = `
+    ${renderThirdSection("Projected in", projected)}
+    ${renderThirdSection("Other possible third-place teams", possible)}
+  `;
+}
+
+function renderThirdSection(title, teams) {
+  return `
+    <section class="third-section">
+      <h3>${title}</h3>
+      ${teams.map(renderThirdCard).join("")}
+    </section>
+  `;
+}
+
+function renderThirdCard(item) {
+  return `
+    <article class="third-card ${item.projectedIn ? "" : "possible"} ${item.confirmed ? "confirmed-card" : ""}">
+      <span class="rank">${item.rank}</span>
+      <span>
+        <strong>${item.name}</strong>
+        <span class="team-meta">3${item.group} | ${item.projectedIn ? "projected in" : "possible"}${item.confirmed ? " | confirmed" : ""}</span>
+      </span>
+      <span class="record">${recordLine(item)}</span>
+    </article>
+  `;
 }
 
 function renderStandings() {
@@ -355,11 +388,15 @@ function renderStandings() {
 }
 
 function renderStandingRow(row, index, thirdQualifies) {
-  const className = index < 2 ? "qualify" : index === 2 && thirdQualifies ? "third" : "";
+  const className = [
+    index < 2 ? "qualify" : "",
+    index === 2 && thirdQualifies ? "third" : "",
+    confirmedTeams.has(row.name) ? "confirmed" : "",
+  ].filter(Boolean).join(" ");
   const gd = row.gd > 0 ? `+${row.gd}` : row.gd;
   return `
     <tr class="${className}">
-      <td>${row.name}</td>
+      <td>${row.name}${confirmedTeams.has(row.name) ? ' <span class="status-chip">Confirmed</span>' : ""}</td>
       <td>${row.wins}</td>
       <td>${row.draws}</td>
       <td>${row.losses}</td>

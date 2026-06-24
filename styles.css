@@ -276,6 +276,15 @@ footer {
   background: rgba(12, 107, 79, 0.08);
 }
 
+.confirmed-row {
+  background: rgba(37, 95, 145, 0.12);
+}
+
+.confirmed-row:hover,
+.confirmed-row:focus-visible {
+  background: rgba(37, 95, 145, 0.18);
+}
+
 .seed {
   display: grid;
   place-items: center;
@@ -347,7 +356,19 @@ footer {
 
 .third-list {
   display: grid;
+  gap: 14px;
+}
+
+.third-section {
+  display: grid;
   gap: 8px;
+}
+
+.third-section h3 {
+  margin: 0;
+  color: #35443a;
+  font-size: 0.78rem;
+  text-transform: uppercase;
 }
 
 .third-card {
@@ -359,6 +380,15 @@ footer {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #fffaf0;
+}
+
+.third-card.possible {
+  background: #fffdf8;
+}
+
+.third-card.confirmed-card {
+  border-color: rgba(37, 95, 145, 0.34);
+  background: rgba(37, 95, 145, 0.1);
 }
 
 .rank {
@@ -434,6 +464,23 @@ tr.qualify {
 
 tr.third {
   background: rgba(201, 155, 41, 0.12);
+}
+
+tr.confirmed {
+  background: rgba(37, 95, 145, 0.12);
+}
+
+.status-chip {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 850;
+  text-transform: uppercase;
+  vertical-align: middle;
 }
 
 footer {
