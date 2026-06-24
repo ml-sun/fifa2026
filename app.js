@@ -24,52 +24,52 @@ const groups = {
     team("Turkiye", 0, 0, 2, 0, 3),
   ],
   E: [
-    team("Germany", 1, 0, 0, 7, 1),
-    team("Ivory Coast", 1, 0, 0, 1, 0),
-    team("Ecuador", 0, 0, 1, 0, 1),
-    team("Curacao", 0, 0, 1, 1, 7),
+    team("Germany", 2, 0, 0, 9, 2),
+    team("Ivory Coast", 1, 0, 1, 2, 2),
+    team("Ecuador", 0, 1, 1, 0, 1, -2),
+    team("Curacao", 0, 1, 1, 1, 7),
   ],
   F: [
     team("Netherlands", 1, 1, 0, 7, 3),
-    team("Sweden", 1, 0, 1, 6, 6),
-    team("Japan", 0, 1, 0, 2, 2),
-    team("Tunisia", 0, 0, 1, 1, 5),
+    team("Japan", 1, 1, 0, 6, 2),
+    team("Sweden", 1, 0, 1, 6, 6, -3),
+    team("Tunisia", 0, 0, 2, 1, 9),
   ],
   G: [
-    team("Belgium", 0, 1, 0, 1, 1),
-    team("Egypt", 0, 1, 0, 1, 1),
-    team("Iran", 0, 1, 0, 2, 2),
-    team("New Zealand", 0, 1, 0, 2, 2),
+    team("Egypt", 1, 1, 0, 4, 2),
+    team("Iran", 0, 2, 0, 3, 3),
+    team("Belgium", 0, 2, 0, 2, 2, 0),
+    team("New Zealand", 0, 1, 1, 3, 5),
   ],
   H: [
-    team("Uruguay", 0, 1, 0, 1, 1),
-    team("Saudi Arabia", 0, 1, 0, 1, 1),
-    team("Spain", 0, 1, 0, 0, 0),
-    team("Cabo Verde", 0, 1, 0, 0, 0),
+    team("Spain", 1, 1, 0, 4, 0),
+    team("Uruguay", 0, 2, 0, 3, 3),
+    team("Cabo Verde", 0, 2, 0, 2, 2, -3),
+    team("Saudi Arabia", 0, 1, 1, 1, 5),
   ],
   I: [
-    team("Norway", 1, 0, 0, 4, 1),
-    team("France", 1, 0, 0, 3, 1),
-    team("Senegal", 0, 0, 1, 1, 3),
-    team("Iraq", 0, 0, 1, 1, 4),
+    team("France", 2, 0, 0, 6, 1),
+    team("Norway", 2, 0, 0, 7, 3),
+    team("Senegal", 0, 0, 2, 3, 6, 0),
+    team("Iraq", 0, 0, 2, 1, 7),
   ],
   J: [
-    team("Argentina", 1, 0, 0, 3, 0),
-    team("Austria", 1, 0, 0, 3, 1),
-    team("Jordan", 0, 0, 1, 1, 3),
-    team("Algeria", 0, 0, 1, 0, 3),
+    team("Argentina", 2, 0, 0, 5, 0),
+    team("Austria", 1, 0, 1, 3, 3),
+    team("Algeria", 1, 0, 1, 2, 4, -1),
+    team("Jordan", 0, 0, 2, 2, 5),
   ],
   K: [
-    team("Colombia", 1, 0, 0, 3, 1),
-    team("Portugal", 0, 1, 0, 1, 1),
-    team("DR Congo", 0, 1, 0, 1, 1),
-    team("Uzbekistan", 0, 0, 1, 1, 3),
+    team("Colombia", 2, 0, 0, 4, 1),
+    team("Portugal", 1, 1, 0, 6, 1),
+    team("DR Congo", 0, 1, 1, 1, 2, -2),
+    team("Uzbekistan", 0, 0, 2, 1, 8),
   ],
   L: [
-    team("England", 1, 0, 0, 4, 2),
-    team("Ghana", 1, 0, 0, 1, 0),
-    team("Panama", 0, 0, 1, 0, 1),
-    team("Croatia", 0, 0, 1, 2, 4),
+    team("England", 1, 1, 0, 4, 2),
+    team("Ghana", 1, 1, 0, 1, 0),
+    team("Croatia", 1, 0, 1, 3, 4, -1),
+    team("Panama", 0, 0, 2, 0, 2),
   ],
 };
 
@@ -84,37 +84,38 @@ const qualificationNotes = {
   "United States": "Already clinched a top-two Group D finish and is projected as 1D after two wins.",
   Australia: "Projected 2D. Needs to finish ahead of Paraguay on points or tiebreakers after the final Group D match.",
   Paraguay: "Projected 3D. Needs to remain third in Group D and stay inside the best third-place table.",
-  Germany: "Projected 1E. Needs to avoid being passed by Ivory Coast on points or tiebreakers.",
+  Germany: "Clinched Group E after beating Ivory Coast and Ecuador-Curacao ended level.",
   "Ivory Coast": "Projected 2E. Needs to stay ahead of Ecuador and Curacao, or pass Germany, in Group E.",
-  Netherlands: "Projected 1F. Needs to protect first place from Sweden and Japan through points or tiebreakers.",
-  Sweden: "Projected 2F. Needs to stay top two in Group F; Japan can still challenge with matches in hand.",
-  Japan: "Projected 3F. Needs to finish third or better in Group F and keep a strong third-place profile.",
-  Belgium: "Projected 1G. Needs to separate from a level Group G table through points or tiebreakers.",
-  Egypt: "Projected 2G. Needs to remain top two in Group G as all four teams are still tightly packed.",
-  Iran: "Projected 3G. Needs to finish third in Group G and remain among the best third-place teams.",
-  Uruguay: "Projected 1H. Needs to finish ahead of Saudi Arabia, Spain, and Cabo Verde on points or tiebreakers.",
-  "Saudi Arabia": "Projected 2H. Needs to stay top two in Group H; the group is currently level after one match.",
-  Spain: "Projected 3H. Needs to finish third or better in Group H and stay inside the best third-place cutoff.",
-  Norway: "Projected 1I. Needs to hold first place over France on points or tiebreakers.",
-  France: "Projected 2I. Needs to stay top two in Group I, with Senegal and Iraq chasing from zero points.",
-  Argentina: "Projected 1J. Needs to preserve first place over Austria on points or tiebreakers.",
+  Netherlands: "Projected 1F. Needs to stay ahead of Japan on points or tiebreakers on the final Group F day.",
+  Japan: "Projected 2F. Needs to stay top two in Group F; Sweden can still overtake Japan directly.",
+  Sweden: "Projected 3F. Currently leads the third-place table and needs to stay in the top eight third-place teams.",
+  Egypt: "Projected 1G. Needs to protect first place from Iran, Belgium, and New Zealand on the final Group G day.",
+  Iran: "Projected 2G. Needs to stay top two in Group G; Egypt and Belgium remain close.",
+  Belgium: "Projected 3G. Needs to finish third or better in Group G and remain among the best third-place teams.",
+  Spain: "Projected 1H. Needs to protect first place from Uruguay and Cabo Verde on the final Group H day.",
+  Uruguay: "Projected 2H. Needs to stay top two in Group H; Cabo Verde is level on points.",
+  "Cabo Verde": "Projected 3H. Needs to finish third or better in Group H and remain among the best third-place teams.",
+  France: "Projected 1I. Already through; a draw against Norway likely keeps first on current goal difference.",
+  Norway: "Projected 2I. Already through; a win over France would win Group I.",
+  Argentina: "Projected 1J. Already through and leads Group J after beating Austria.",
   Austria: "Projected 2J. Needs to stay top two in Group J, or overtake Argentina for first.",
+  Algeria: "Projected 3J. Needs to finish third or better in Group J and stay inside the best third-place cutoff.",
   Colombia: "Projected 1K. Needs to hold Group K first place over Portugal and DR Congo.",
-  Portugal: "Projected 2K. Needs to stay top two in Group K; DR Congo is level on points and goal difference.",
-  "DR Congo": "Projected 3K. Needs to finish third or better in Group K and remain among the best third-place teams.",
+  Portugal: "Projected 2K. Needs to beat Colombia to win Group K; otherwise it must protect second place.",
   England: "Projected 1L. Needs to hold first place over Ghana on points or tiebreakers.",
-  Ghana: "Projected 2L. Needs to stay top two in Group L, with Panama and Croatia still able to climb.",
+  Ghana: "Projected 2L. Needs to stay top two in Group L, with Croatia still able to climb.",
+  Croatia: "Projected 3L. Needs to finish third or better in Group L and stay inside the best third-place cutoff.",
 };
 
 const thirdAssignments = {
   74: "F",
-  77: "H",
+  77: "D",
   79: "C",
-  80: "K",
-  81: "B",
+  80: "H",
+  81: "J",
   82: "A",
   85: "G",
-  87: "D",
+  87: "L",
 };
 
 const knockout = [
@@ -126,17 +127,17 @@ const knockout = [
       match(74, "Jun 29", "Foxborough", seed("1", "E"), seed("3", "F")),
       match(75, "Jun 29", "Guadalupe", seed("1", "F"), seed("2", "C")),
       match(78, "Jun 30", "Arlington", seed("2", "E"), seed("2", "I")),
-      match(77, "Jun 30", "East Rutherford", seed("1", "I"), seed("3", "H")),
+      match(77, "Jun 30", "East Rutherford", seed("1", "I"), seed("3", "D")),
       match(79, "Jun 30", "Mexico City", seed("1", "A"), seed("3", "C")),
-      match(80, "Jul 1", "Atlanta", seed("1", "L"), seed("3", "K")),
+      match(80, "Jul 1", "Atlanta", seed("1", "L"), seed("3", "H")),
       match(82, "Jul 1", "Seattle", seed("1", "G"), seed("3", "A")),
-      match(81, "Jul 1", "Santa Clara", seed("1", "D"), seed("3", "B")),
+      match(81, "Jul 1", "Santa Clara", seed("1", "D"), seed("3", "J")),
       match(84, "Jul 2", "Inglewood", seed("1", "H"), seed("2", "J")),
       match(83, "Jul 2", "Toronto", seed("2", "K"), seed("2", "L")),
       match(85, "Jul 2", "Vancouver", seed("1", "B"), seed("3", "G")),
       match(88, "Jul 3", "Arlington", seed("2", "D"), seed("2", "G")),
       match(86, "Jul 3", "Miami Gardens", seed("1", "J"), seed("2", "H")),
-      match(87, "Jul 3", "Kansas City", seed("1", "K"), seed("3", "D")),
+      match(87, "Jul 3", "Kansas City", seed("1", "K"), seed("3", "L")),
     ],
   },
   {
@@ -171,13 +172,12 @@ const knockout = [
   {
     name: "Round of 2",
     matches: [
-      futureMatch(103, "Jul 18", "Miami Gardens", 101, 102, "Third place", "loser"),
       futureMatch(104, "Jul 19", "East Rutherford", 101, 102, "Final"),
     ],
   },
 ];
 
-function team(name, wins, draws, losses, gf, ga) {
+function team(name, wins, draws, losses, gf, ga, tcs = 0) {
   return {
     name,
     wins,
@@ -187,6 +187,7 @@ function team(name, wins, draws, losses, gf, ga) {
     ga,
     gd: gf - ga,
     pts: wins * 3 + draws,
+    tcs,
   };
 }
 
@@ -257,21 +258,23 @@ function renderBracket() {
   bracket.innerHTML = knockout.map(renderRound).join("");
 }
 
-function renderRound(round) {
+function renderRound(round, roundIndex) {
+  const span = 2 ** roundIndex;
   return `
     <section class="round" aria-label="${round.name}">
       <h3>${round.name}</h3>
       <div class="round-matches">
-        ${round.matches.map(renderMatch).join("")}
+        ${round.matches.map((fixture, index) => renderMatch(fixture, index, span)).join("")}
       </div>
     </section>
   `;
 }
 
-function renderMatch(fixture) {
+function renderMatch(fixture, index, span) {
   const sides = [entrantFor(fixture.home), entrantFor(fixture.away)];
+  const slotStart = index * span + 1;
   return `
-    <article class="match">
+    <article class="match" style="--slot-start: ${slotStart}; --slot-span: ${span};">
       <div class="match-head">
         <span>${fixture.label || `Match ${fixture.id}`}</span>
         <span>${fixture.date} | ${fixture.location}</span>
@@ -283,7 +286,7 @@ function renderMatch(fixture) {
 
 function renderTeamRow(item) {
   const isThird = item.seed.startsWith("3");
-  const isFuture = item.seed.startsWith("W");
+  const isFuture = !item.group;
   const note = qualificationNotes[item.name] || "This slot is decided by the prior knockout result.";
   return `
     <button class="team-row ${isFuture ? "future-row" : ""}" type="button" aria-label="${item.name}: ${note}">
@@ -301,7 +304,7 @@ function renderTeamRow(item) {
 function thirdPlacedTeams() {
   return Object.entries(groups)
     .map(([group, rows]) => ({ ...rows[2], group }))
-    .sort((a, b) => b.pts - a.pts || b.gd - a.gd || b.gf - a.gf || a.group.localeCompare(b.group));
+    .sort((a, b) => b.pts - a.pts || b.gd - a.gd || b.gf - a.gf || b.tcs - a.tcs || a.group.localeCompare(b.group));
 }
 
 function renderThirdList() {
