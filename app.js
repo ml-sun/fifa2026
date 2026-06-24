@@ -121,14 +121,25 @@ const qualificationNotes = {
 };
 
 const thirdAssignments = {
-  74: "F",
-  77: "D",
+  74: "D",
+  77: "F",
   79: "C",
-  80: "H",
-  81: "J",
-  82: "B",
+  80: "J",
+  81: "B",
+  82: "H",
   85: "G",
   87: "L",
+};
+
+const thirdPlacePools = {
+  74: ["A", "B", "C", "D", "F"],
+  77: ["C", "D", "F", "G", "H"],
+  79: ["C", "E", "F", "H", "I"],
+  80: ["E", "H", "I", "J", "K"],
+  81: ["B", "E", "F", "I", "J"],
+  82: ["A", "E", "H", "I", "J"],
+  85: ["E", "F", "G", "I", "J"],
+  87: ["D", "E", "I", "J", "L"],
 };
 
 const knockout = [
@@ -137,14 +148,14 @@ const knockout = [
     matches: [
       match(73, "Jun 28", "Inglewood", seed("2", "A"), seed("2", "B")),
       match(76, "Jun 29", "Houston", seed("1", "C"), seed("2", "F")),
-      match(74, "Jun 29", "Foxborough", seed("1", "E"), seed("3", "F")),
+      match(74, "Jun 29", "Foxborough", seed("1", "E"), seed("3", "D")),
       match(75, "Jun 29", "Guadalupe", seed("1", "F"), seed("2", "C")),
       match(78, "Jun 30", "Arlington", seed("2", "E"), seed("2", "I")),
-      match(77, "Jun 30", "East Rutherford", seed("1", "I"), seed("3", "D")),
+      match(77, "Jun 30", "East Rutherford", seed("1", "I"), seed("3", "F")),
       match(79, "Jun 30", "Mexico City", seed("1", "A"), seed("3", "C")),
-      match(80, "Jul 1", "Atlanta", seed("1", "L"), seed("3", "H")),
-      match(82, "Jul 1", "Seattle", seed("1", "G"), seed("3", "B")),
-      match(81, "Jul 1", "Santa Clara", seed("1", "D"), seed("3", "J")),
+      match(80, "Jul 1", "Atlanta", seed("1", "L"), seed("3", "J")),
+      match(82, "Jul 1", "Seattle", seed("1", "G"), seed("3", "H")),
+      match(81, "Jul 1", "Santa Clara", seed("1", "D"), seed("3", "B")),
       match(84, "Jul 2", "Inglewood", seed("1", "H"), seed("2", "J")),
       match(83, "Jul 2", "Toronto", seed("2", "K"), seed("2", "L")),
       match(85, "Jul 2", "Vancouver", seed("1", "B"), seed("3", "G")),
@@ -223,7 +234,7 @@ function futureMatch(id, date, location, homeMatch, awayMatch, label = "", resul
   };
 }
 
-function teamFor(seedData) {
+function teamFor(seedData, matchId) {
   const index = Number(seedData.place) - 1;
   const source = groups[seedData.group][index];
   return {
@@ -231,12 +242,13 @@ function teamFor(seedData) {
     seed: `${seedData.place}${seedData.group}`,
     group: seedData.group,
     confirmed: confirmedTeams.has(source.name),
+    eligibleGroups: seedData.place === "3" ? thirdPlacePools[matchId] : null,
   };
 }
 
-function entrantFor(entry) {
+function entrantFor(entry, fixture) {
   if (entry.type === "seed") {
-    return teamFor(entry);
+    return teamFor(entry, fixture.id);
   }
 
   const prefix = entry.type === "loser" ? "Loser" : "Winner";
@@ -268,6 +280,9 @@ function roundRole(item) {
   if (item.seed.startsWith("2")) {
     return `Group ${item.group} runner-up`;
   }
+  if (item.eligibleGroups) {
+    return `Group ${item.group} third place | slot: ${item.eligibleGroups.join("/")}`;
+  }
   return `Group ${item.group} third place`;
 }
 
@@ -289,7 +304,7 @@ function renderRound(round, roundIndex) {
 }
 
 function renderMatch(fixture, index, span) {
-  const sides = [entrantFor(fixture.home), entrantFor(fixture.away)];
+  const sides = [entrantFor(fixture.home, fixture), entrantFor(fixture.away, fixture)];
   const slotStart = index * span + 1;
   return `
     <article class="match" style="--slot-start: ${slotStart}; --slot-span: ${span};">
@@ -306,7 +321,7 @@ function renderTeamRow(item) {
   const isThird = item.seed.startsWith("3");
   const isFuture = !item.group;
   const baseNote = qualificationNotes[item.name] || "This slot is decided by the prior knockout result.";
-  const note = isThird ? `${baseNote} ${thirdPlaceAlternatives(item)}` : baseNote;
+  const note = isThird ? `${baseNote} ${thirdPlaceSlotOptions(item)}` : baseNote;
   return `
     <button class="team-row ${isFuture ? "future-row" : ""} ${item.confirmed ? "confirmed-row" : ""}" type="button" aria-label="${item.name}: ${note}">
       <span class="seed ${isThird ? "third-seed" : ""} ${isFuture ? "future-seed" : ""} ${item.confirmed ? "confirmed-seed" : ""}">${item.seed}</span>
@@ -318,6 +333,20 @@ function renderTeamRow(item) {
       <span class="tooltip" role="tooltip">${note}</span>
     </button>
   `;
+}
+
+function thirdPlaceSlotOptions(item) {
+  if (!item.eligibleGroups) {
+    return thirdPlaceAlternatives(item);
+  }
+
+  const currentTeams = item.eligibleGroups
+    .map((group) => {
+      const candidate = groups[group]?.[2];
+      return candidate ? `${candidate.name} (3${group})` : `3${group}`;
+    })
+    .join(", ");
+  return `Eligible slot groups: ${item.eligibleGroups.join("/")}. Current teams in those groups: ${currentTeams}.`;
 }
 
 function thirdPlaceAlternatives(item) {
