@@ -366,14 +366,58 @@ function renderBracket() {
 
 function renderRound(round, roundIndex) {
   const span = 2 ** roundIndex;
+  const matches = bracketOrderedMatches(roundIndex);
   return `
     <section class="round" aria-label="${round.name}">
       <h3>${round.name}</h3>
       <div class="round-matches">
-        ${round.matches.map((fixture, index) => renderMatch(fixture, index, span, roundIndex)).join("")}
+        ${matches.map((fixture, index) => renderMatch(fixture, index, span, roundIndex)).join("")}
       </div>
     </section>
   `;
+}
+
+function bracketOrderedMatches(roundIndex) {
+  const fixturesById = new Map();
+  const roundById = new Map();
+  knockout.forEach((round, index) => {
+    round.matches.forEach((fixture) => {
+      fixturesById.set(fixture.id, fixture);
+      roundById.set(fixture.id, index);
+    });
+  });
+
+  const ordered = [];
+  const seen = new Set();
+
+  function visit(fixture) {
+    if (!fixture || seen.has(fixture.id)) {
+      return;
+    }
+
+    const fixtureRoundIndex = roundById.get(fixture.id);
+    if (fixtureRoundIndex === roundIndex) {
+      ordered.push(fixture);
+      seen.add(fixture.id);
+      return;
+    }
+
+    [fixture.home, fixture.away].forEach((entry) => {
+      if (entry.type === "winner" || entry.type === "loser") {
+        visit(fixturesById.get(entry.match));
+      }
+    });
+  }
+
+  knockout[knockout.length - 1].matches.forEach(visit);
+
+  knockout[roundIndex].matches.forEach((fixture) => {
+    if (!seen.has(fixture.id)) {
+      ordered.push(fixture);
+    }
+  });
+
+  return ordered;
 }
 
 function renderMatch(fixture, index, span, roundIndex) {
