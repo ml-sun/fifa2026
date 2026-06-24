@@ -368,7 +368,7 @@ function renderRound(round, roundIndex) {
   const span = 2 ** roundIndex;
   const matches = bracketOrderedMatches(roundIndex);
   return `
-    <section class="round" aria-label="${round.name}">
+    <section class="round round-${roundIndex}" aria-label="${round.name}">
       <h3>${round.name}</h3>
       <div class="round-matches">
         ${matches.map((fixture, index) => renderMatch(fixture, index, span, roundIndex)).join("")}

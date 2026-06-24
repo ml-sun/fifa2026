@@ -234,6 +234,16 @@ footer {
   box-shadow: 0 8px 18px rgba(42, 34, 24, 0.05);
 }
 
+.round-0 .match {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.round-0 .team-row {
+  flex: 1 1 0;
+}
+
 .match-head {
   display: flex;
   justify-content: space-between;
