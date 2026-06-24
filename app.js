@@ -6,10 +6,10 @@ const groups = {
     team("South Africa", 0, 1, 1, 1, 3),
   ],
   B: [
-    team("Canada", 1, 1, 0, 7, 1),
-    team("Switzerland", 1, 1, 0, 5, 2),
-    team("Bosnia and Herzegovina", 0, 1, 1, 2, 5),
-    team("Qatar", 0, 1, 1, 1, 7),
+    team("Switzerland", 2, 1, 0, 7, 3),
+    team("Canada", 1, 1, 1, 8, 3),
+    team("Bosnia and Herzegovina", 1, 1, 1, 5, 6),
+    team("Qatar", 0, 1, 2, 2, 10),
   ],
   C: [
     team("Brazil", 1, 1, 0, 4, 1),
@@ -75,6 +75,8 @@ const groups = {
 
 const confirmedTeams = new Set([
   "Mexico",
+  "Switzerland",
+  "Canada",
   "United States",
   "Germany",
   "France",
@@ -86,8 +88,9 @@ const confirmedTeams = new Set([
 const qualificationNotes = {
   Mexico: "Already clinched Group A. The projected 1A spot is secure.",
   "South Korea": "Projected 2A. A draw against South Africa secures advancement; a loss can open the door for Czechia or South Africa on tiebreakers.",
-  Canada: "Projected 1B. Needs to finish ahead of Switzerland on points or tiebreakers after the final Group B matchday.",
-  Switzerland: "Projected 2B. Needs to stay top two in Group B; goal difference gives a cushion over Bosnia and Qatar.",
+  Switzerland: "Confirmed as Group B winner after beating Canada 2-1.",
+  Canada: "Confirmed as Group B runner-up after finishing ahead of Bosnia and Herzegovina on goal difference.",
+  "Bosnia and Herzegovina": "Projected 3B. Beat Qatar 3-1 to reach four points and is currently in the third-place qualification mix.",
   Brazil: "Projected 1C. Needs to hold off Morocco on points or tiebreakers over the remaining Group C fixtures.",
   Morocco: "Projected 2C. Needs to remain ahead of Scotland, or pass Brazil, after the final Group C matchday.",
   Scotland: "Projected 3C. Needs to finish third in Group C and stay among the eight best third-place teams.",
@@ -123,7 +126,7 @@ const thirdAssignments = {
   79: "C",
   80: "H",
   81: "J",
-  82: "A",
+  82: "B",
   85: "G",
   87: "L",
 };
@@ -140,7 +143,7 @@ const knockout = [
       match(77, "Jun 30", "East Rutherford", seed("1", "I"), seed("3", "D")),
       match(79, "Jun 30", "Mexico City", seed("1", "A"), seed("3", "C")),
       match(80, "Jul 1", "Atlanta", seed("1", "L"), seed("3", "H")),
-      match(82, "Jul 1", "Seattle", seed("1", "G"), seed("3", "A")),
+      match(82, "Jul 1", "Seattle", seed("1", "G"), seed("3", "B")),
       match(81, "Jul 1", "Santa Clara", seed("1", "D"), seed("3", "J")),
       match(84, "Jul 2", "Inglewood", seed("1", "H"), seed("2", "J")),
       match(83, "Jul 2", "Toronto", seed("2", "K"), seed("2", "L")),
@@ -302,18 +305,27 @@ function renderMatch(fixture, index, span) {
 function renderTeamRow(item) {
   const isThird = item.seed.startsWith("3");
   const isFuture = !item.group;
-  const note = qualificationNotes[item.name] || "This slot is decided by the prior knockout result.";
+  const baseNote = qualificationNotes[item.name] || "This slot is decided by the prior knockout result.";
+  const note = isThird ? `${baseNote} ${thirdPlaceAlternatives(item)}` : baseNote;
   return `
     <button class="team-row ${isFuture ? "future-row" : ""} ${item.confirmed ? "confirmed-row" : ""}" type="button" aria-label="${item.name}: ${note}">
-      <span class="seed ${isThird ? "third-seed" : ""} ${isFuture ? "future-seed" : ""}">${item.seed}</span>
+      <span class="seed ${isThird ? "third-seed" : ""} ${isFuture ? "future-seed" : ""} ${item.confirmed ? "confirmed-seed" : ""}">${item.seed}</span>
       <span>
-        <span class="team-name">${item.name}</span>
+        <span class="team-name">${item.name}${item.confirmed ? ' <span class="bracket-chip">Confirmed</span>' : ""}</span>
         <span class="team-meta">${roundRole(item)}${item.confirmed ? " | confirmed" : ""}</span>
       </span>
       <span class="record">${recordLine(item)}</span>
       <span class="tooltip" role="tooltip">${note}</span>
     </button>
   `;
+}
+
+function thirdPlaceAlternatives(item) {
+  const alternatives = thirdPlacedTeams()
+    .filter((teamData) => teamData.group !== item.group)
+    .map((teamData) => `${teamData.name} (3${teamData.group})`)
+    .join(", ");
+  return `Other current third-place candidates: ${alternatives}.`;
 }
 
 function thirdPlacedTeams() {
