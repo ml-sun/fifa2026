@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FIFA World Cup 2026 Knockout Projection</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="masthead">
+        <div>
+          <p class="eyebrow">FIFA World Cup 2026</p>
+          <h1>Knockout projection</h1>
+          <p class="lede">
+            Built from current group standings as of June 20, 2026, 7:00 PM UTC.
+            The full bracket is projected from the active Round of 32 field.
+          </p>
+        </div>
+        <div class="status-panel" aria-label="Projection status">
+          <span class="status-dot"></span>
+          <div>
+            <strong>Live-state bracket</strong>
+            <span>Group stage still in progress</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="summary-grid" aria-label="Qualification summary">
+        <article>
+          <span class="metric" id="autoCount">24</span>
+          <span class="metric-label">Top-two teams</span>
+        </article>
+        <article>
+          <span class="metric" id="thirdCount">8</span>
+          <span class="metric-label">Best third-place teams</span>
+        </article>
+        <article>
+          <span class="metric">32</span>
+          <span class="metric-label">Knockout matches</span>
+        </article>
+      </section>
+
+      <section class="layout">
+        <div class="panel bracket-panel">
+          <div class="section-title">
+            <h2>Full projected bracket</h2>
+            <p>Projected through the final, with venues shown on every match.</p>
+          </div>
+          <div class="bracket" id="bracket"></div>
+        </div>
+
+        <aside class="panel">
+          <div class="section-title">
+            <h2>Third-place table</h2>
+            <p>Top eight qualify in this live projection.</p>
+          </div>
+          <div class="third-list" id="thirdList"></div>
+        </aside>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">
+          <h2>Group standings</h2>
+          <p>Rows are ordered by the current standing used by the projection.</p>
+        </div>
+        <div class="standings-grid" id="standings"></div>
+      </section>
+
+      <footer>
+        Sources:
+        <a href="https://www.sbnation.com/soccer/1117905/world-cup-standings-updated-full-list-of-teams">SB Nation standings update</a>
+        and
+        <a href="https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_knockout_stage">FIFA/Wikipedia knockout slot definitions</a>.
+      </footer>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
