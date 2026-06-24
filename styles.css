@@ -219,8 +219,8 @@ footer {
 
 .round-matches {
   display: grid;
-  grid-template-rows: repeat(16, 96px);
-  min-height: 1536px;
+  grid-template-rows: repeat(16, 146px);
+  min-height: 2336px;
   row-gap: 12px;
 }
 
