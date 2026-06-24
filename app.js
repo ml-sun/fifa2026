@@ -120,17 +120,6 @@ const qualificationNotes = {
   Croatia: "Projected 3L. Needs to finish third or better in Group L and stay inside the best third-place cutoff.",
 };
 
-const thirdAssignments = {
-  74: "D",
-  77: "F",
-  79: "C",
-  80: "J",
-  81: "B",
-  82: "H",
-  85: "G",
-  87: "L",
-};
-
 const thirdPlacePools = {
   74: ["A", "B", "C", "D", "F"],
   77: ["C", "D", "F", "G", "H"],
@@ -142,26 +131,40 @@ const thirdPlacePools = {
   87: ["D", "E", "I", "J", "L"],
 };
 
+const THIRD_PLACE_SLOT_MATCHES = {
+  "1A": 79,
+  "1B": 85,
+  "1D": 81,
+  "1E": 74,
+  "1G": 82,
+  "1I": 77,
+  "1K": 87,
+  "1L": 80,
+};
+
+const annexCProjection = getAnnexCProjection();
+const thirdAssignments = annexCProjection.assignments;
+
 const knockout = [
   {
     name: "Round of 32",
     matches: [
       match(73, "Jun 28", "Inglewood", seed("2", "A"), seed("2", "B")),
       match(76, "Jun 29", "Houston", seed("1", "C"), seed("2", "F")),
-      match(74, "Jun 29", "Foxborough", seed("1", "E"), seed("3", "D")),
+      match(74, "Jun 29", "Foxborough", seed("1", "E"), thirdSeed(74)),
       match(75, "Jun 29", "Guadalupe", seed("1", "F"), seed("2", "C")),
       match(78, "Jun 30", "Arlington", seed("2", "E"), seed("2", "I")),
-      match(77, "Jun 30", "East Rutherford", seed("1", "I"), seed("3", "F")),
-      match(79, "Jun 30", "Mexico City", seed("1", "A"), seed("3", "C")),
-      match(80, "Jul 1", "Atlanta", seed("1", "L"), seed("3", "J")),
-      match(82, "Jul 1", "Seattle", seed("1", "G"), seed("3", "H")),
-      match(81, "Jul 1", "Santa Clara", seed("1", "D"), seed("3", "B")),
+      match(77, "Jun 30", "East Rutherford", seed("1", "I"), thirdSeed(77)),
+      match(79, "Jun 30", "Mexico City", seed("1", "A"), thirdSeed(79)),
+      match(80, "Jul 1", "Atlanta", seed("1", "L"), thirdSeed(80)),
+      match(82, "Jul 1", "Seattle", seed("1", "G"), thirdSeed(82)),
+      match(81, "Jul 1", "Santa Clara", seed("1", "D"), thirdSeed(81)),
       match(84, "Jul 2", "Inglewood", seed("1", "H"), seed("2", "J")),
       match(83, "Jul 2", "Toronto", seed("2", "K"), seed("2", "L")),
-      match(85, "Jul 2", "Vancouver", seed("1", "B"), seed("3", "G")),
+      match(85, "Jul 2", "Vancouver", seed("1", "B"), thirdSeed(85)),
       match(88, "Jul 3", "Arlington", seed("2", "D"), seed("2", "G")),
       match(86, "Jul 3", "Miami Gardens", seed("1", "J"), seed("2", "H")),
-      match(87, "Jul 3", "Kansas City", seed("1", "K"), seed("3", "L")),
+      match(87, "Jul 3", "Kansas City", seed("1", "K"), thirdSeed(87)),
     ],
   },
   {
@@ -219,6 +222,10 @@ function seed(place, group) {
   return { type: "seed", place, group };
 }
 
+function thirdSeed(matchId) {
+  return seed("3", thirdAssignments[matchId]);
+}
+
 function match(id, date, location, home, away) {
   return { id, date, location, home, away };
 }
@@ -232,6 +239,31 @@ function futureMatch(id, date, location, homeMatch, awayMatch, label = "", resul
     home: { type: result, match: homeMatch },
     away: { type: result, match: awayMatch },
   };
+}
+
+function getAnnexCProjection() {
+  const qualifiedGroups = thirdPlacedTeams()
+    .slice(0, 8)
+    .map((item) => item.group)
+    .sort()
+    .join("");
+
+  const optionEntry = Object.entries(ANNEX_C_MAPPING).find(([, slots]) => {
+    const slotGroups = slots.map((slot) => slot.slice(1)).sort().join("");
+    return slotGroups === qualifiedGroups;
+  });
+
+  if (!optionEntry) {
+    throw new Error(`No Annex C option for third-place groups ${qualifiedGroups}`);
+  }
+
+  const [option, slots] = optionEntry;
+  const assignments = {};
+  ANNEX_C_SLOT_ORDER.forEach((slot, index) => {
+    assignments[THIRD_PLACE_SLOT_MATCHES[slot]] = slots[index].slice(1);
+  });
+
+  return { option: Number(option), qualifiedGroups, assignments };
 }
 
 function teamFor(seedData, matchId) {
