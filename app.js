@@ -1,9 +1,9 @@
 const groups = {
   A: [
-    team("Mexico", 2, 0, 0, 3, 0, 0, 12),
-    team("South Korea", 1, 0, 1, 2, 2, 0, 24),
-    team("Czechia", 0, 1, 1, 2, 3, 0, 43),
-    team("South Africa", 0, 1, 1, 1, 3, 0, 60),
+    team("Mexico", 3, 0, 0, 6, 0, 0, 12),
+    team("South Africa", 1, 1, 1, 2, 3, 0, 60),
+    team("South Korea", 1, 0, 2, 2, 3, 0, 24),
+    team("Czechia", 0, 1, 2, 2, 6, 0, 43),
   ],
   B: [
     team("Switzerland", 2, 1, 0, 7, 3, 0, 17),
@@ -12,112 +12,136 @@ const groups = {
     team("Qatar", 0, 1, 2, 2, 10, 0, 61),
   ],
   C: [
-    team("Brazil", 1, 1, 0, 4, 1, 0, 5),
-    team("Morocco", 1, 1, 0, 2, 1, 0, 11),
-    team("Scotland", 1, 0, 1, 1, 1, 0, 41),
-    team("Haiti", 0, 0, 2, 0, 4, 0, 79),
+    team("Brazil", 2, 1, 0, 7, 1, 0, 5),
+    team("Morocco", 2, 1, 0, 6, 3, 0, 11),
+    team("Scotland", 1, 0, 2, 1, 4, 0, 41),
+    team("Haiti", 0, 0, 3, 2, 8, 0, 79),
   ],
   D: [
-    team("United States", 2, 0, 0, 6, 1, 0, 14),
-    team("Australia", 1, 0, 1, 2, 2, 0, 26),
-    team("Paraguay", 1, 0, 1, 2, 4, 0, 37),
-    team("Turkiye", 0, 0, 2, 0, 3, 0, 32),
+    team("United States", 2, 0, 1, 8, 4, 0, 14),
+    team("Australia", 1, 1, 1, 2, 2, 0, 26),
+    team("Paraguay", 1, 1, 1, 2, 4, 0, 37),
+    team("Turkiye", 1, 0, 2, 3, 5, 0, 32),
   ],
   E: [
-    team("Germany", 2, 0, 0, 9, 2, 0, 8),
-    team("Ivory Coast", 1, 0, 1, 2, 2, 0, 30),
-    team("Ecuador", 0, 1, 1, 0, 1, -2, 29),
-    team("Curacao", 0, 1, 1, 1, 7, 0, 82),
+    team("Germany", 2, 0, 1, 10, 4, 0, 8),
+    team("Ivory Coast", 2, 0, 1, 4, 2, 0, 30),
+    team("Ecuador", 1, 1, 1, 2, 2, 0, 29),
+    team("Curacao", 0, 1, 2, 1, 9, 0, 82),
   ],
   F: [
-    team("Netherlands", 1, 1, 0, 7, 3, 0, 7),
-    team("Japan", 1, 1, 0, 6, 2, 0, 16),
-    team("Sweden", 1, 0, 1, 6, 6, -3, 36),
-    team("Tunisia", 0, 0, 2, 1, 9, 0, 56),
+    team("Netherlands", 2, 1, 0, 10, 4, 0, 7),
+    team("Japan", 1, 2, 0, 7, 3, 0, 16),
+    team("Sweden", 1, 1, 1, 7, 7, 0, 36),
+    team("Tunisia", 0, 0, 3, 2, 12, 0, 56),
   ],
   G: [
-    team("Egypt", 1, 1, 0, 4, 2, 0, 27),
-    team("Iran", 0, 2, 0, 3, 3, 0, 21),
-    team("Belgium", 0, 2, 0, 2, 2, 0, 9),
-    team("New Zealand", 0, 1, 1, 3, 5, 0, 85),
+    team("Belgium", 1, 2, 0, 7, 3, 0, 9),
+    team("Egypt", 1, 2, 0, 5, 3, 0, 27),
+    team("Iran", 0, 3, 0, 4, 4, 0, 21),
+    team("New Zealand", 0, 1, 2, 4, 10, 0, 85),
   ],
   H: [
-    team("Spain", 1, 1, 0, 4, 0, 0, 3),
-    team("Uruguay", 0, 2, 0, 3, 3, 0, 18),
-    team("Cabo Verde", 0, 2, 0, 2, 2, -3, 64),
-    team("Saudi Arabia", 0, 1, 1, 1, 5, 0, 58),
+    team("Spain", 2, 1, 0, 5, 0, 0, 3),
+    team("Cabo Verde", 0, 3, 0, 2, 2, 0, 64),
+    team("Uruguay", 0, 2, 1, 3, 4, 0, 18),
+    team("Saudi Arabia", 0, 1, 2, 1, 5, 0, 58),
   ],
   I: [
-    team("France", 2, 0, 0, 6, 1, 0, 2),
-    team("Norway", 2, 0, 0, 7, 3, 0, 22),
-    team("Senegal", 0, 0, 2, 3, 6, 0, 19),
-    team("Iraq", 0, 0, 2, 1, 7, 0, 59),
+    team("France", 3, 0, 0, 10, 2, 0, 2),
+    team("Norway", 2, 0, 1, 8, 7, 0, 22),
+    team("Senegal", 1, 0, 2, 8, 6, 0, 19),
+    team("Iraq", 0, 0, 3, 1, 12, 0, 59),
   ],
   J: [
-    team("Argentina", 2, 0, 0, 5, 0, 0, 1),
-    team("Austria", 1, 0, 1, 3, 3, 0, 23),
-    team("Algeria", 1, 0, 1, 2, 4, -1, 28),
-    team("Jordan", 0, 0, 2, 2, 5, 0, 72),
+    team("Argentina", 3, 0, 0, 8, 1, 0, 1),
+    team("Austria", 1, 1, 1, 6, 6, 0, 23),
+    team("Algeria", 1, 1, 1, 5, 7, 0, 28),
+    team("Jordan", 0, 0, 3, 3, 8, 0, 72),
   ],
   K: [
-    team("Colombia", 2, 0, 0, 4, 1, 0, 10),
-    team("Portugal", 1, 1, 0, 6, 1, 0, 6),
-    team("DR Congo", 0, 1, 1, 1, 2, -2, 47),
-    team("Uzbekistan", 0, 0, 2, 1, 8, 0, 57),
+    team("Colombia", 2, 1, 0, 4, 1, 0, 10),
+    team("Portugal", 1, 2, 0, 6, 1, 0, 6),
+    team("DR Congo", 1, 1, 1, 4, 3, 0, 47),
+    team("Uzbekistan", 0, 0, 3, 2, 11, 0, 57),
   ],
   L: [
-    team("England", 1, 1, 0, 4, 2, 0, 4),
-    team("Ghana", 1, 1, 0, 1, 0, 0, 65),
-    team("Croatia", 1, 0, 1, 3, 4, -1, 13),
-    team("Panama", 0, 0, 2, 0, 2, 0, 42),
+    team("England", 2, 1, 0, 6, 2, 0, 4),
+    team("Croatia", 2, 0, 1, 5, 5, 0, 13),
+    team("Ghana", 1, 1, 1, 2, 2, 0, 65),
+    team("Panama", 0, 0, 3, 0, 4, 0, 42),
   ],
 };
 
 const confirmedTeams = new Set([
   "Mexico",
+  "South Africa",
   "Switzerland",
   "Canada",
+  "Bosnia and Herzegovina",
+  "Brazil",
+  "Morocco",
   "United States",
+  "Australia",
+  "Paraguay",
   "Germany",
+  "Ivory Coast",
+  "Ecuador",
+  "Netherlands",
+  "Japan",
+  "Sweden",
+  "Belgium",
+  "Egypt",
+  "Spain",
+  "Cabo Verde",
   "France",
   "Norway",
+  "Senegal",
   "Argentina",
+  "Austria",
+  "Algeria",
   "Colombia",
+  "Portugal",
+  "DR Congo",
+  "England",
+  "Croatia",
+  "Ghana",
 ]);
 
 const qualificationNotes = {
-  Mexico: "Already clinched Group A. The projected 1A spot is secure.",
-  "South Korea": "Projected 2A. A draw against South Africa secures advancement; a loss can open the door for Czechia or South Africa on tiebreakers.",
+  Mexico: "Clinched Group A, then beat Ecuador 2-0 to reach the Round of 16.",
+  "South Africa": "Finished second in Group A and lost 1-0 to Canada in the Round of 32.",
   Switzerland: "Confirmed as Group B winner after beating Canada 2-1.",
   Canada: "Confirmed as Group B runner-up after finishing ahead of Bosnia and Herzegovina on goal difference.",
-  "Bosnia and Herzegovina": "Projected 3B. Beat Qatar 3-1 to reach four points and is currently in the third-place qualification mix.",
-  Brazil: "Projected 1C. Needs to hold off Morocco on points or tiebreakers over the remaining Group C fixtures.",
-  Morocco: "Projected 2C. Needs to remain ahead of Scotland, or pass Brazil, after the final Group C matchday.",
-  Scotland: "Projected 3C. Needs to finish third in Group C and stay among the eight best third-place teams.",
-  "United States": "Already clinched a top-two Group D finish and is projected as 1D after two wins.",
-  Australia: "Projected 2D. Needs to finish ahead of Paraguay on points or tiebreakers after the final Group D match.",
-  Paraguay: "Projected 3D. Needs to remain third in Group D and stay inside the best third-place table.",
-  Germany: "Clinched Group E after beating Ivory Coast and Ecuador-Curacao ended level.",
-  "Ivory Coast": "Projected 2E. Needs to stay ahead of Ecuador and Curacao, or pass Germany, in Group E.",
-  Netherlands: "Projected 1F. Needs to stay ahead of Japan on points or tiebreakers on the final Group F day.",
-  Japan: "Projected 2F. Needs to stay top two in Group F; Sweden can still overtake Japan directly.",
-  Sweden: "Projected 3F. Currently leads the third-place table and needs to stay in the top eight third-place teams.",
-  Egypt: "Projected 1G. Needs to protect first place from Iran, Belgium, and New Zealand on the final Group G day.",
-  Iran: "Projected 2G. Needs to stay top two in Group G; Egypt and Belgium remain close.",
-  Belgium: "Projected 3G. Needs to finish third or better in Group G and remain among the best third-place teams.",
-  Spain: "Projected 1H. Needs to protect first place from Uruguay and Cabo Verde on the final Group H day.",
-  Uruguay: "Projected 2H. Needs to stay top two in Group H; Cabo Verde is level on points.",
-  "Cabo Verde": "Projected 3H. Needs to finish third or better in Group H and remain among the best third-place teams.",
-  France: "Projected 1I. Already through; a draw against Norway likely keeps first on current goal difference.",
-  Norway: "Projected 2I. Already through; a win over France would win Group I.",
-  Argentina: "Projected 1J. Already through and leads Group J after beating Austria.",
-  Austria: "Projected 2J. Needs to stay top two in Group J, or overtake Argentina for first.",
-  Algeria: "Projected 3J. Needs to finish third or better in Group J and stay inside the best third-place cutoff.",
-  Colombia: "Projected 1K. Needs to hold Group K first place over Portugal and DR Congo.",
-  Portugal: "Projected 2K. Needs to beat Colombia to win Group K; otherwise it must protect second place.",
-  England: "Projected 1L. Needs to hold first place over Ghana on points or tiebreakers.",
-  Ghana: "Projected 2L. Needs to stay top two in Group L, with Croatia still able to climb.",
-  Croatia: "Projected 3L. Needs to finish third or better in Group L and stay inside the best third-place cutoff.",
+  "Bosnia and Herzegovina": "Qualified as 3B and plays the United States in the Round of 32.",
+  Brazil: "Won Group C, beat Japan 2-1, and will face Norway in the Round of 16.",
+  Morocco: "Finished second in Group C, beat the Netherlands on penalties, and will face Canada in the Round of 16.",
+  Scotland: "Finished third in Group C but missed the eight-team third-place cutoff.",
+  "United States": "Won Group D and plays Bosnia and Herzegovina in the Round of 32.",
+  Australia: "Finished second in Group D and plays Egypt in the Round of 32.",
+  Paraguay: "Qualified as 3D, eliminated Germany on penalties, and will face France in the Round of 16.",
+  Germany: "Won Group E but was eliminated by Paraguay on penalties in the Round of 32.",
+  "Ivory Coast": "Finished second in Group E and lost 2-1 to Norway in the Round of 32.",
+  Ecuador: "Qualified as 3E and lost 2-0 to Mexico in the Round of 32.",
+  Netherlands: "Won Group F but was eliminated by Morocco on penalties in the Round of 32.",
+  Japan: "Finished second in Group F and lost 2-1 to Brazil in the Round of 32.",
+  Sweden: "Qualified as 3F and lost 3-0 to France in the Round of 32.",
+  Belgium: "Won Group G and plays Senegal in the Round of 32.",
+  Egypt: "Finished second in Group G and plays Australia in the Round of 32.",
+  Spain: "Won Group H and plays Austria in the Round of 32.",
+  "Cabo Verde": "Finished second in Group H and plays Argentina in the Round of 32.",
+  France: "Won Group I, beat Sweden 3-0, and will face Paraguay in the Round of 16.",
+  Norway: "Finished second in Group I, beat Ivory Coast 2-1, and will face Brazil in the Round of 16.",
+  Senegal: "Qualified as 3I and plays Belgium in the Round of 32.",
+  Argentina: "Won Group J and plays Cabo Verde in the Round of 32.",
+  Austria: "Finished second in Group J and plays Spain in the Round of 32.",
+  Algeria: "Qualified as 3J and plays Switzerland in the Round of 32.",
+  Colombia: "Won Group K and plays Ghana in the Round of 32.",
+  Portugal: "Finished second in Group K and plays Croatia in the Round of 32.",
+  "DR Congo": "Qualified as 3K and lost 2-1 to England in the Round of 32.",
+  England: "Won Group L, beat DR Congo 2-1, and will face Mexico in the Round of 16.",
+  Croatia: "Finished second in Group L and plays Portugal in the Round of 32.",
+  Ghana: "Qualified as 3L and plays Colombia in the Round of 32.",
 };
 
 const thirdPlacePools = {
@@ -149,16 +173,16 @@ const knockout = [
   {
     name: "Round of 32",
     matches: [
-      match(73, "Jun 28", "Inglewood", seed("2", "A"), seed("2", "B")),
-      match(76, "Jun 29", "Houston", seed("1", "C"), seed("2", "F")),
-      match(74, "Jun 29", "Foxborough", seed("1", "E"), thirdSeed(74)),
-      match(75, "Jun 29", "Guadalupe", seed("1", "F"), seed("2", "C")),
-      match(78, "Jun 30", "Arlington", seed("2", "E"), seed("2", "I")),
-      match(77, "Jun 30", "East Rutherford", seed("1", "I"), thirdSeed(77)),
-      match(79, "Jun 30", "Mexico City", seed("1", "A"), thirdSeed(79)),
-      match(80, "Jul 1", "Atlanta", seed("1", "L"), thirdSeed(80)),
-      match(82, "Jul 1", "Seattle", seed("1", "G"), thirdSeed(82)),
-      match(81, "Jul 1", "Santa Clara", seed("1", "D"), thirdSeed(81)),
+      match(73, "Jun 28", "Inglewood", seed("2", "A"), seed("2", "B"), result("away", "Canada 1, South Africa 0")),
+      match(76, "Jun 29", "Houston", seed("1", "C"), seed("2", "F"), result("home", "Brazil 2, Japan 1")),
+      match(74, "Jun 29", "Foxborough", seed("1", "E"), thirdSeed(74), result("away", "Paraguay advances 4-3 on penalties")),
+      match(75, "Jun 29", "Guadalupe", seed("1", "F"), seed("2", "C"), result("away", "Morocco advances 3-2 on penalties")),
+      match(78, "Jun 30", "Arlington", seed("2", "E"), seed("2", "I"), result("away", "Norway 2, Ivory Coast 1")),
+      match(77, "Jun 30", "East Rutherford", seed("1", "I"), thirdSeed(77), result("home", "France 3, Sweden 0")),
+      match(79, "Jun 30", "Mexico City", seed("1", "A"), thirdSeed(79), result("home", "Mexico 2, Ecuador 0")),
+      match(80, "Jul 1", "Atlanta", seed("1", "L"), thirdSeed(80), result("home", "England 2, DR Congo 1")),
+      match(82, "Jul 1", "Seattle", seed("1", "G"), thirdSeed(82), null, "Live: Senegal led Belgium 1-0 after a 25th-minute Diarra goal"),
+      match(81, "Jul 1", "Santa Clara", seed("1", "D"), thirdSeed(81), null, "Upcoming: 8 p.m. ET on July 1"),
       match(84, "Jul 2", "Inglewood", seed("1", "H"), seed("2", "J")),
       match(83, "Jul 2", "Toronto", seed("2", "K"), seed("2", "L")),
       match(85, "Jul 2", "Vancouver", seed("1", "B"), thirdSeed(85)),
@@ -227,8 +251,8 @@ function thirdSeed(matchId) {
   return seed("3", thirdAssignments[matchId]);
 }
 
-function match(id, date, location, home, away) {
-  return { id, date, location, home, away };
+function match(id, date, location, home, away, matchResult = null, status = "") {
+  return { id, date, location, home, away, result: matchResult, status };
 }
 
 function futureMatch(id, date, location, homeMatch, awayMatch, label = "", result = "winner") {
@@ -240,6 +264,10 @@ function futureMatch(id, date, location, homeMatch, awayMatch, label = "", resul
     home: { type: result, match: homeMatch },
     away: { type: result, match: awayMatch },
   };
+}
+
+function result(winner, summary) {
+  return { winner, summary };
 }
 
 function getAnnexCProjection() {
@@ -285,10 +313,10 @@ function entrantFor(entry, fixture) {
   }
 
   if (entry.type === "winner") {
-    return projectedWinner(entry.match);
+    return winnerFor(entry.match);
   }
 
-  return projectedLoser(entry.match);
+  return loserFor(entry.match);
 }
 
 function recordLine(item) {
@@ -331,15 +359,26 @@ function getFixtureById(matchId) {
   throw new Error(`Unknown match ${matchId}`);
 }
 
-function projectedWinner(matchId) {
+function sidesForFixture(fixture) {
+  return [entrantFor(fixture.home, fixture), entrantFor(fixture.away, fixture)];
+}
+
+function winnerFor(matchId) {
   const fixture = getFixtureById(matchId);
-  const sides = [entrantFor(fixture.home, fixture), entrantFor(fixture.away, fixture)];
+  const sides = sidesForFixture(fixture);
+  if (fixture.result) {
+    const winner = fixture.result.winner === "home" ? sides[0] : sides[1];
+    return { ...winner, knockoutConfirmed: true, fromMatch: matchId };
+  }
   return sides[0].fifaRank <= sides[1].fifaRank ? sides[0] : sides[1];
 }
 
-function projectedLoser(matchId) {
+function loserFor(matchId) {
   const fixture = getFixtureById(matchId);
-  const sides = [entrantFor(fixture.home, fixture), entrantFor(fixture.away, fixture)];
+  const sides = sidesForFixture(fixture);
+  if (fixture.result) {
+    return fixture.result.winner === "home" ? sides[1] : sides[0];
+  }
   return sides[0].fifaRank > sides[1].fifaRank ? sides[0] : sides[1];
 }
 
@@ -421,25 +460,26 @@ function bracketOrderedMatches(roundIndex) {
 }
 
 function renderMatch(fixture, index, span, roundIndex) {
-  const sides = [entrantFor(fixture.home, fixture), entrantFor(fixture.away, fixture)];
+  const sides = sidesForFixture(fixture);
   const slotStart = index * span + 1;
   const showProjection = roundIndex > 0;
+  const subtitle = fixture.result?.summary || fixture.status || (showProjection ? probabilityLine(sides) : "");
   return `
-    <article class="match" style="--slot-start: ${slotStart}; --slot-span: ${span};">
+    <article class="match ${fixture.result ? "played-match" : ""}" style="--slot-start: ${slotStart}; --slot-span: ${span};">
       <div class="match-head">
         <span>${fixture.label || `Match ${fixture.id}`}</span>
         <span>${fixture.date} | ${fixture.location}</span>
       </div>
-      ${showProjection ? `<div class="match-subtitle">${probabilityLine(sides)}</div>` : ""}
-      ${sides.map((side) => renderTeamRow(side, roundIndex === 0)).join("")}
+      ${subtitle ? `<div class="match-subtitle">${subtitle}</div>` : ""}
+      ${sides.map((side) => renderTeamRow(side, roundIndex)).join("")}
     </article>
   `;
 }
 
-function renderTeamRow(item, showConfirmed) {
+function renderTeamRow(item, roundIndex) {
   const isThird = item.seed.startsWith("3");
   const isFuture = !item.group;
-  const isConfirmed = showConfirmed && item.confirmed;
+  const isConfirmed = (roundIndex === 0 && item.confirmed) || item.knockoutConfirmed;
   const baseNote = qualificationNotes[item.name] || "This slot is decided by the prior knockout result.";
   const note = isThird ? `${baseNote} ${thirdPlaceSlotOptions(item)}` : baseNote;
   return `
@@ -494,8 +534,8 @@ function renderThirdList() {
   const projected = teams.filter((item) => item.projectedIn);
   const possible = teams.filter((item) => !item.projectedIn);
   list.innerHTML = `
-    ${renderThirdSection("Projected in", projected)}
-    ${renderThirdSection("Other possible third-place teams", possible)}
+    ${renderThirdSection("Qualified third-place teams", projected)}
+    ${renderThirdSection("Outside cutoff", possible)}
   `;
 }
 
@@ -514,7 +554,7 @@ function renderThirdCard(item) {
       <span class="rank">${item.rank}</span>
       <span>
         <strong>${item.name}</strong>
-        <span class="team-meta">3${item.group} | ${item.projectedIn ? "projected in" : "possible"}${item.confirmed ? " | confirmed" : ""}</span>
+        <span class="team-meta">3${item.group} | ${item.projectedIn ? "qualified" : "outside cutoff"}${item.confirmed ? " | confirmed" : ""}</span>
       </span>
       <span class="record">${recordLine(item)}</span>
     </article>
